@@ -35,16 +35,15 @@ Y="\e[33m"
 
  CHECK_ROOT
 
- dnf install mysql-server -y
+ dnf install mysql-server -y &>>$LOG_FILE
  VALIDATE $? "Installing MYSQL Server"
 
- systemctl enable mysqld
+ systemctl enable mysqld &>>$LOG_FILE
  VALIDATE $? "Enable mysql server"
 
- systemctl start mysqld
+ systemctl start mysqld &>>$LOG_FILE
  VALIDATE $? "Started mysql server"
 
  mysql_secure_installation --set-root-pass ExpenseApp@1
  VALIDATE $? "Setting Up root password"
 
- 
