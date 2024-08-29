@@ -44,6 +44,6 @@ Y="\e[33m"
  systemctl start mysqld &>>$LOG_FILE
  VALIDATE $? "Started mysql server"
 
- mysql_secure_installation --set-root-pass ExpenseApp@1
+ mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOG_FILE
  VALIDATE $? "Setting Up root password"
 
