@@ -38,11 +38,12 @@ Y="\e[33m"
  dnf module disable nodejs -y &>>$LOG_FILE
  VALIDATE $? "disable default nodejs"
 
- dnf module enable nodejs:20 &>>$LOG_FILE
+ dnf module enable nodejs:20 -y &>>$LOG_FILE
  VALIDATE $? "Enable nodejs:20"
 
  dnf install nodejs -y &>>$LOG_FILE
  VALIDATE $? "installing nodejs"
 
- useradd expense 
+ id expense
+ useradd expense &>>$LOG_FILE
  VALIDATE $? "Creating expense user"
