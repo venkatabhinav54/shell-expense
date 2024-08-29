@@ -67,3 +67,21 @@ VALIDATE $? "Extracting backend application code"
 
 npm install &>>$LOG_FILE
 pwd /home/ec2-user/shell-expense/backend.service /etc/systemd/system/backend.service
+
+
+#load the data before running backend
+
+dnf install mysql -y &>>$LOG_FILE
+VALIDATE $? "Installingn Mysql client"
+
+mysql -h mysql.devops1289.online -uroot -pExpenseApp@1 < /app/shema/backend.sql
+VALIDATE $? "Schema loading"
+
+systemctl daemon-reload &>>$LOG_FILE
+VALIDATE $? "Daemon reload"
+
+systemctl enable backend &>>$LOG_FILE
+VALIDATE $? "Enable backend"
+
+systemctl restart backend &>>$LOG_FILE
+VALIDATE $? "Restarting the backend"
