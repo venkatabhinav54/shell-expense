@@ -74,7 +74,7 @@ pwd /home/ec2-user/shell-expense/backend.service /etc/systemd/system/backend.ser
 dnf install mysql -y &>>$LOG_FILE
 VALIDATE $? "Installingn Mysql client"
 
-mysql -h mysql.devops1289.online -uroot -pExpenseApp@1 < /app/shema/backend.sql
+mysql -h mysql.devops1289.online -uroot -pExpenseApp@1 < /app/schema/backend.sql
 VALIDATE $? "Schema loading"
 
 systemctl daemon-reload &>>$LOG_FILE
