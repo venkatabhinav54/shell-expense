@@ -44,6 +44,11 @@ Y="\e[33m"
  dnf install nodejs -y &>>$LOG_FILE
  VALIDATE $? "installing nodejs"
 
- id expense
- useradd expense &>>$LOG_FILE
- VALIDATE $? "Creating expense user"
+ id expense &>>$LOG_FILE
+ if [ $? -ne 0 ]
+ then 
+     echo "expense user not exists... $G Creating $N"
+     useradd expense &>>$LOG_FILE
+     VALIDATE $? "Creating expense user"
+ else 
+     echo -e "expense user already exists... $Y SKIPPING $N"    
