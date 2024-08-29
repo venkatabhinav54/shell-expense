@@ -52,3 +52,5 @@ Y="\e[33m"
      VALIDATE $? "Creating expense user"
  else 
      echo -e "expense user already exists... $Y SKIPPING $N"    
+ fi
+
