@@ -57,3 +57,4 @@ Y="\e[33m"
  cp /home/ec2-user/shell-expense/expense.conf /etc/nginx/default.d/expense.conf
 
  systemctl restart nginx
+ VALIDATE $? "Restarted Nginx"
