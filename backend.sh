@@ -54,3 +54,16 @@ Y="\e[33m"
      echo -e "expense user already exists... $Y SKIPPING $N"    
  fi
 
+mkdir -p /app
+VALIDATE $? "Creating /app folder"
+
+curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip &>>$LOG_FILE
+VALIDATE $? "Downloading backend application code"
+
+cd /app
+rm rf /app/* #removing the existing code
+unzip /tmp/backend.zip &>>$LOG_FILE
+VALIDATE $? "Extracting backend application code"
+
+npm install &>>$LOG_FILE
+pwd /home/ec2-user/shell-expense/backend.service /etc/systemd/system/backend.service

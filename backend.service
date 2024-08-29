@@ -1,0 +1,11 @@
+[Unit]
+Description = Backend Service
+
+[Service]
+User=expanse
+Environment=DB_HOST="mysql.devops1289.online"
+ExecStart=/bin/node /app/index.js
+SystemIdentifier=Backend
+
+[Install]
+WantedBy=multi-user.target
