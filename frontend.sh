@@ -54,6 +54,6 @@ Y="\e[33m"
  unzip /tmp/frontend.zip &>>$LOG_FILE
  VALIDATE $? "Extracting frontend code"
 
- cp /home/ec2-user/expense-shell/expense.conf /etc/nginx/default.d/expense.conf
+ cp /home/ec2-user/shell-expense/expense.conf /etc/nginx/default.d/expense.conf
 
  systemctl restart nginx
